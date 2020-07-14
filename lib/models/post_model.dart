@@ -8,6 +8,7 @@ class Post {
   final String title;
   final String slug;
   final String video_file;
+  final String cover_image;
   final String description;
   final String created_at;
   final String updated_at;
@@ -19,7 +20,8 @@ class Post {
     @required this.category,
     @required this.title,
     @required this.slug,
-     @required this.video_file,
+    @required this.cover_image,
+    @required this.video_file,
     @required this.description,
     @required this.created_at,
     @required this.updated_at
@@ -34,6 +36,7 @@ class Post {
         title: json['title'] as String,
         slug: json['slug'] as String,
         video_file: json['video_file'] as String,
+        cover_image: json['cover_image'] as String,
         description: json['description'] as String,
         created_at: json['created_at'] as String,
         updated_at: json['updated_at'] as String

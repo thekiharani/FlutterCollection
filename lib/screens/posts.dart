@@ -16,22 +16,31 @@ class _PostsPageState extends State<PostsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Posts'),
+        title: Image.network('https://maishabeta-space.ams3.digitaloceanspaces.com/maishabeta/logos/web-logo_v2.png'),
+        backgroundColor: Colors.white,
         centerTitle: true,
+        elevation: 0.5,
       ),
       body: FutureBuilder(
         future: httpService.getPosts(),
         builder: (BuildContext context, AsyncSnapshot<List<Post>> snapshot) {
           if (snapshot.hasData) {
             List<Post> posts = snapshot.data;
-            return ListView(
-              children: posts.map((Post dev) => ListTile(
-                title: Text(dev.title),
-                subtitle: Text(dev.video_file),
-                onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => PostDetail(post: dev,))
-                ),
-              )).toList(),
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: ListView(
+                children: posts.map((Post post) => Padding(
+                  padding: const EdgeInsets.only(bottom: 12),
+                  child: ListTile(
+                    leading: Image.network(post.cover_image),
+                    title: Text(post.title),
+//                subtitle: Text(post.description),
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => PostDetail(post: post,))
+                    ),
+                  ),
+                )).toList(),
+              ),
             );
           }
 

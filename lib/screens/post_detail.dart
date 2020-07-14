@@ -1,5 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:maishabeta/models/post_model.dart';
+import 'package:video_player/video_player.dart';
+
+import 'chewie_screen.dart';
 
 class PostDetail extends StatelessWidget {
   final Post post;
@@ -14,25 +18,27 @@ class PostDetail extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(12),
+          padding: const EdgeInsets.all(4),
           child: Card(
+            elevation: 1,
             child: Column(
               children: <Widget>[
-                ListTile(
-                  title: Text('Name'),
-                  subtitle: Text(post.title),
+                ChewieScreen(
+                videoPlayerController: VideoPlayerController.network(post.video_file),
+                  looping: false,
                 ),
-                ListTile(
-                  title: Text('ID'),
-                  subtitle: Text("${post.id}"),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 18.0),
+                  child: Text(post.title, style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue,
+                    letterSpacing: 2,
+                  ),),
                 ),
-                ListTile(
-                  title: Text('URL'),
-                  subtitle: Text(post.video_file),
-                ),
-                ListTile(
-                  title: Text('Languages'),
-                  subtitle: Text("${post.category}"),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Center(child: Text(post.description, style: TextStyle(),)),
                 ),
               ],
             ),

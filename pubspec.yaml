@@ -24,6 +24,9 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^0.12.1
+  video_player: ^0.10.11+2
+  chewie: ^0.9.10
+  auto_orientation: ^0.0.2
 
 
   # The following adds the Cupertino Icons font to your application.
